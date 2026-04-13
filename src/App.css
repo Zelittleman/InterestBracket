@@ -1,0 +1,268 @@
+/* ── Global ── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #1a1a2e;
+  color: #eee;
+  min-height: 100vh;
+}
+
+.App {
+  text-align: center;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+}
+
+/* ── Interest Entry Page ── */
+.interest-entry h1 {
+  font-size: 2rem;
+  margin-bottom: 0.25rem;
+  color: #e94560;
+}
+
+.interest-entry .subtitle {
+  color: #aaa;
+  margin-bottom: 1.5rem;
+}
+
+.interest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 0.75rem;
+  max-width: 900px;
+  margin: 0 auto 2rem;
+}
+
+.interest-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.interest-input-wrapper label {
+  font-weight: bold;
+  min-width: 28px;
+  text-align: right;
+  color: #e94560;
+}
+
+.interest-input-wrapper input {
+  flex: 1;
+  padding: 0.6rem 0.75rem;
+  border: 2px solid #333;
+  border-radius: 6px;
+  background: #16213e;
+  color: #eee;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+
+.interest-input-wrapper input:focus {
+  outline: none;
+  border-color: #e94560;
+}
+
+.interest-input-wrapper input.error {
+  border-color: #ff6b6b;
+}
+
+.interest-input-wrapper .error-msg {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #ff6b6b;
+  font-size: 0.75rem;
+  pointer-events: none;
+}
+
+.has-error input {
+  border-color: #ff6b6b;
+}
+
+.next-button {
+  padding: 0.75rem 2.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  background: #e94560;
+  color: white;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+}
+
+.next-button:hover {
+  background: #c73352;
+}
+
+.next-button:active {
+  transform: scale(0.97);
+}
+
+/* ── Bracket Page ── */
+.bracket-page h1 {
+  font-size: 2rem;
+  color: #e94560;
+  margin-bottom: 1rem;
+}
+
+.champion-banner {
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, #e94560, #0f3460);
+  padding: 1rem 2rem;
+  border-radius: 12px;
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  animation: pulse 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(1.03); }
+}
+
+.bracket-container {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.bracket-side {
+  flex: 1;
+  min-width: 280px;
+  max-width: 400px;
+}
+
+.bracket-side h2 {
+  color: #0f3460;
+  background: #e94560;
+  padding: 0.5rem;
+  border-radius: 8px 8px 0 0;
+  font-size: 1rem;
+}
+
+.bracket-finals {
+  min-width: 240px;
+  max-width: 300px;
+  align-self: center;
+}
+
+.bracket-finals h2 {
+  color: #1a1a2e;
+  background: #ffd700;
+  padding: 0.5rem;
+  border-radius: 8px 8px 0 0;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+.rounds {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.round {
+  background: #16213e;
+  border: 1px solid #333;
+  border-radius: 0 0 8px 8px;
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.round h3 {
+  font-size: 0.85rem;
+  color: #e94560;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.matchups {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.matchup {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  justify-content: center;
+}
+
+.vs {
+  font-size: 0.7rem;
+  color: #888;
+  font-weight: bold;
+}
+
+.matchup-option {
+  flex: 1;
+  padding: 0.5rem 0.5rem;
+  border: 2px solid #333;
+  border-radius: 6px;
+  background: #0f3460;
+  color: #eee;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  max-width: 160px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.matchup-option:hover:not(:disabled) {
+  border-color: #e94560;
+  background: #1a1a4e;
+}
+
+.matchup-option:disabled {
+  cursor: default;
+  opacity: 0.6;
+}
+
+.matchup-option.winner {
+  background: #2d6a4f;
+  border-color: #52b788;
+  opacity: 1 !important;
+  font-weight: bold;
+}
+
+.matchup-option.loser {
+  opacity: 0.35;
+  text-decoration: line-through;
+}
+
+.waiting {
+  color: #555;
+  font-style: italic;
+  font-size: 0.85rem;
+  padding: 0.5rem;
+}
+
+.reset-button {
+  padding: 0.6rem 2rem;
+  font-size: 1rem;
+  border: 2px solid #e94560;
+  border-radius: 8px;
+  background: transparent;
+  color: #e94560;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.reset-button:hover {
+  background: #e94560;
+  color: white;
+}
